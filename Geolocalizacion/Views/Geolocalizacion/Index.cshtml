@@ -1,0 +1,26 @@
+﻿@model Geolocalizacion.Models.GeolocalizacionModel
+
+<h2>Geolocalización con IP-API</h2>
+
+<form method="post">
+    <label>Dirección IP:</label>
+    <input type="text" name="ip" />
+    <button type="submit">Buscar</button>
+</form>
+
+@if (ViewBag.Error != null)
+{
+    <p style="color:red">@ViewBag.Error</p>
+}
+
+@if (Model != null && Model.status == "success")
+{
+    <h3>Resultado</h3>
+    <ul>
+        <li><strong>País:</strong> @Model.country</li>
+        <li><strong>Ciudad:</strong> @Model.city</li>
+        <li><strong>Región:</strong> @Model.regionName</li>
+        <li><strong>Latitud:</strong> @Model.lat</li>
+        <li><strong>Longitud:</strong> @Model.lon</li>
+    </ul>
+}
